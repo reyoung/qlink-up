@@ -9,3 +9,6 @@ SOURCES += mainwindow.cpp \
     timeline.cpp
 FORMS += mainwindow.ui \
     playwidget.ui
+DESTDIR += Build
+RESOURCES += Resources.qrc
+QT += phonon

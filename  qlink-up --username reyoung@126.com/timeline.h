@@ -6,7 +6,7 @@
 class TimeLine : public QLabel
 {
 public:
-    TimeLine();
+    explicit TimeLine(QWidget *parent = 0);
 };
 
 #endif // TIMELINE_H

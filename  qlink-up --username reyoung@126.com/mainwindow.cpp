@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QDebug>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MainWindow)
@@ -11,6 +11,17 @@ MainWindow::MainWindow(QWidget *parent) :
     this->timeLine = new TimeLine;
     this->timeLine->setText(tr("This is the Time Line , Need to be build"));
     this->m_ui->timeLineLayout->addWidget(this->timeLine);
+    this->m_ui->actionMusic_On_Off->setCheckable(true);
+    this->connect(this->m_ui->actionMusic_On_Off,SIGNAL(triggered(bool)),
+                  this,SLOT(bgmSlot()));
+
+    //BGM
+    this->audioOutput = new Phonon::AudioOutput(Phonon::VideoCategory,this);
+    this->mediaObject = new Phonon::MediaObject(this);
+    Phonon::createPath(this->mediaObject,this->audioOutput);
+    this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
+    this->mediaObject->pause();
+    this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
 }
 
 MainWindow::~MainWindow()
@@ -29,4 +40,16 @@ void MainWindow::changeEvent(QEvent *e)
     default:
         break;
     }
+}
+void MainWindow::bgmSlot()
+{
+    if(this->m_ui->actionMusic_On_Off->isChecked())
+        this->mediaObject->play();
+    else
+        this->mediaObject->pause();
+}
+void MainWindow::bgmFinishSlot()
+{
+    this->mediaObject->setCurrentSource(Phonon::MediaSource("/BGM/BGM.mp3"));
+    this->mediaObject->play();
 }
