@@ -23,7 +23,9 @@ public:
 protected:
     void changeEvent(QEvent *e);
 private slots:
+    //BGM Play Or Pause
     void bgmSlot();
+    //For BGM Loop
     void bgmFinishSlot();
 private:
     Phonon::MediaObject* mediaObject;

@@ -22,6 +22,10 @@ MainWindow::MainWindow(QWidget *parent) :
     this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
     this->mediaObject->pause();
     this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
+
+
+    //For Debug Only
+    this->timeLine->setTime(300);
 }
 
 MainWindow::~MainWindow()
@@ -41,6 +45,7 @@ void MainWindow::changeEvent(QEvent *e)
         break;
     }
 }
+//BGM Play Or Pause
 void MainWindow::bgmSlot()
 {
     if(this->m_ui->actionMusic_On_Off->isChecked())
@@ -48,6 +53,7 @@ void MainWindow::bgmSlot()
     else
         this->mediaObject->pause();
 }
+//For BGM Loop
 void MainWindow::bgmFinishSlot()
 {
     this->mediaObject->setCurrentSource(Phonon::MediaSource("/BGM/BGM.mp3"));

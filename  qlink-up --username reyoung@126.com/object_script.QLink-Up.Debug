@@ -1,0 +1,12 @@
+INPUT(
+./debug\mainwindow.o
+./debug\Main.o
+./debug\playwidget.o
+./debug\piclabel.o
+./debug\timeline.o
+./debug\moc_mainwindow.o
+./debug\moc_playwidget.o
+./debug\moc_piclabel.o
+./debug\moc_timeline.o
+./debug\qrc_Resources.o
+);
