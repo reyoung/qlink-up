@@ -28,8 +28,8 @@ void TimeLine::paintEvent(QPaintEvent *e)
     painter = new QPainter(this);
     //delete the black edge of time line;
     painter->setPen(Qt::NoPen);
-    //The color will change from yellow to red by time passing
-    painter->setBrush(QBrush(QColor::fromRgb(255,
+    //The color will change from green to red by time passing
+    painter->setBrush(QBrush(QColor::fromRgb(255*double(this->privateData->time-this->privateData->currentTime)/this->privateData->time,
                                              255*(1-double(this->privateData->time-this->privateData->currentTime)/this->privateData->time)
                                              ,0),Qt::SolidPattern));
     //To draw the time line
