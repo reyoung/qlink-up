@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QtGui/QMainWindow>
+
+
+#include <Phonon>
+
 #include "playwidget.h"
 #include "timeline.h"
 
@@ -18,8 +22,13 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
-
+private slots:
+    void bgmSlot();
+    void bgmFinishSlot();
 private:
+    Phonon::MediaObject* mediaObject;
+    Phonon::AudioOutput* audioOutput;
+
     Ui::MainWindow *m_ui;
     PlayWidget* playWidget;
     TimeLine* timeLine;

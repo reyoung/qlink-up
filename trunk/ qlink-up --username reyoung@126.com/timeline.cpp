@@ -1,5 +1,6 @@
 #include "timeline.h"
 
-TimeLine::TimeLine()
+TimeLine::TimeLine(QWidget *parent) :
+    QLabel(parent)
 {
 }
