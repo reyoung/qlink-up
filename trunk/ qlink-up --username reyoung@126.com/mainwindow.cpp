@@ -19,8 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->audioOutput = new Phonon::AudioOutput(Phonon::VideoCategory,this);
     this->mediaObject = new Phonon::MediaObject(this);
     Phonon::createPath(this->mediaObject,this->audioOutput);
-    this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
-    this->mediaObject->pause();
+
     this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
 
 
@@ -49,13 +48,16 @@ void MainWindow::changeEvent(QEvent *e)
 void MainWindow::bgmSlot()
 {
     if(this->m_ui->actionMusic_On_Off->isChecked())
+    {
+        this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
         this->mediaObject->play();
+    }
     else
-        this->mediaObject->pause();
+        this->mediaObject->stop();
 }
 //For BGM Loop
 void MainWindow::bgmFinishSlot()
 {
-    this->mediaObject->setCurrentSource(Phonon::MediaSource("/BGM/BGM.mp3"));
+    this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
     this->mediaObject->play();
 }
