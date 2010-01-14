@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Wed Jan 13 17:51:46 2010
+** Created: Wed Jan 13 21:05:26 2010
 **      by: Qt User Interface Compiler version 4.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -162,7 +162,7 @@ public:
         newGameButton->setText(QApplication::translate("MainWindow", "NewGame", 0, QApplication::UnicodeUTF8));
         promptButton->setText(QApplication::translate("MainWindow", "Prompt", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Score:", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("MainWindow", "Time Line", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("MainWindow", "Time:", 0, QApplication::UnicodeUTF8));
         menuGame->setTitle(QApplication::translate("MainWindow", "Game", 0, QApplication::UnicodeUTF8));
         menuSetting->setTitle(QApplication::translate("MainWindow", "Setting", 0, QApplication::UnicodeUTF8));
         menuAbout->setTitle(QApplication::translate("MainWindow", "About", 0, QApplication::UnicodeUTF8));
