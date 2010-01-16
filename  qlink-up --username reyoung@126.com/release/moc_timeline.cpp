@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'timeline.h'
 **
-** Created: Wed Jan 13 17:48:50 2010
+** Created: Fri Jan 15 22:28:35 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.0)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -2,6 +2,7 @@
 #define PLAYWIDGET_H
 
 #include <QWidget>
+#include "piclabel.h"
 
 namespace Ui {
     class PlayWidget;
@@ -18,6 +19,7 @@ protected:
 
 private:
     Ui::PlayWidget *ui;
+    PicLabel* test;
 };
 
 #endif // PLAYWIDGET_H
