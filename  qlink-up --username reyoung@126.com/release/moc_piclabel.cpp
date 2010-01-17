@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'piclabel.h'
 **
-** Created: Sun Jan 17 01:11:51 2010
+** Created: Sun Jan 17 12:23:17 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
