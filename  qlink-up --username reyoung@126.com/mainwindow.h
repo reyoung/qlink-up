@@ -6,6 +6,7 @@
 
 #include <Phonon>
 
+#include "nameanddescriptionwidget.h"
 #include "playwidget.h"
 #include "timeline.h"
 
@@ -34,6 +35,7 @@ private:
     Ui::MainWindow *m_ui;
     PlayWidget* playWidget;
     TimeLine* timeLine;
+    NameAndDescriptionWidget* nameNDescriptionWidget;
 };
 
 #endif // MAINWINDOW_H

@@ -22,6 +22,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
 
+    this->setWindowTitle(tr("QLink-Up"));
+
+    this->nameNDescriptionWidget = new NameAndDescriptionWidget(this);
+    this->m_ui->nameAndDescription->addWidget(this->nameNDescriptionWidget);
+    this->connect(this->playWidget,SIGNAL(indexChange(int)),this->nameNDescriptionWidget,SLOT(indexChange(int)));
 
     //For Debug Only
     this->timeLine->setTime(300);

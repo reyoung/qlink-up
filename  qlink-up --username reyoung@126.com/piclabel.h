@@ -3,6 +3,9 @@
 
 #include <QLabel>
 #include <QString>
+#include <QImage>
+#include <QRgb>
+#include <QColor>
 
 class PicLabel : public QLabel
 {
@@ -15,12 +18,15 @@ public:
     int getIndex()const;
     bool isPressed();
 signals:
-    void isPressed(bool p);
+    void pressIndex(int index);
 public slots:
     void setIndex(const int& index);
 protected:
     void mousePressEvent(QMouseEvent *ev);
 private:
+    void f_paint();
+
+
     privateData* data;
 };
 

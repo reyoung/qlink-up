@@ -13,7 +13,8 @@ class PlayWidget : public QWidget {
 public:
     PlayWidget(QWidget *parent = 0);
     ~PlayWidget();
-
+signals:
+    void indexChange(int index);
 protected:
     void changeEvent(QEvent *e);
 

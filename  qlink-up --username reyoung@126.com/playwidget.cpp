@@ -11,6 +11,7 @@ PlayWidget::PlayWidget(QWidget *parent) :
     this->test = new PicLabel(this);
     this->test->move(320,240);
     this->test->setIndex(0);
+    this->connect(test,SIGNAL(pressIndex(int)),this,SIGNAL(indexChange(int)));
 }
 
 PlayWidget::~PlayWidget()
