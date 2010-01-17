@@ -31,6 +31,9 @@ void NameAndDescriptionWidget::init()
 {
     this->setMinimumWidth(200);
     this->ui->description->setMinimumHeight(430);
+    QFont temp;
+    temp.setPixelSize(18);
+    this->ui->description->setFont(temp);
 //    this->setAttribute(Qt::WA_NoBackground,true);
     this->show();
 }
