@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Jan 15 22:27:34 2010
+** Created: Sun Jan 17 01:06:37 2010
 **      by: Qt User Interface Compiler version 4.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -36,6 +36,7 @@ public:
     QAction *actionMusic_On_Off;
     QAction *actionAbout_Me;
     QWidget *centralwidget;
+    QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QPushButton *newGameButton;
@@ -48,6 +49,7 @@ public:
     QHBoxLayout *timeLineLayout;
     QSpacerItem *horizontalSpacer_2;
     QHBoxLayout *playWidgetLayout;
+    QVBoxLayout *nameAndDescription;
     QMenuBar *menubar;
     QMenu *menuGame;
     QMenu *menuSetting;
@@ -69,7 +71,9 @@ public:
         actionAbout_Me->setObjectName(QString::fromUtf8("actionAbout_Me"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        verticalLayout = new QVBoxLayout(centralwidget);
+        horizontalLayout_3 = new QHBoxLayout(centralwidget);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -122,6 +126,14 @@ public:
         playWidgetLayout->setObjectName(QString::fromUtf8("playWidgetLayout"));
 
         verticalLayout->addLayout(playWidgetLayout);
+
+
+        horizontalLayout_3->addLayout(verticalLayout);
+
+        nameAndDescription = new QVBoxLayout();
+        nameAndDescription->setObjectName(QString::fromUtf8("nameAndDescription"));
+
+        horizontalLayout_3->addLayout(nameAndDescription);
 
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
