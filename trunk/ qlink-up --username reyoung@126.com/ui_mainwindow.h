@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun Jan 17 01:06:37 2010
+** Created: Sun Jan 17 12:09:15 2010
 **      by: Qt User Interface Compiler version 4.6.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -61,6 +61,11 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(640, 480);
+        MainWindow->setStyleSheet(QString::fromUtf8("QLabel, QAbstractButton {\n"
+"    font: bold;\n"
+"	background-color:rgba(255, 255, 255, 200);\n"
+"}\n"
+""));
         actionNew = new QAction(MainWindow);
         actionNew->setObjectName(QString::fromUtf8("actionNew"));
         actionClose = new QAction(MainWindow);

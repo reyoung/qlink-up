@@ -30,6 +30,8 @@ void NameAndDescriptionWidget::changeEvent(QEvent *e)
 void NameAndDescriptionWidget::init()
 {
     this->setMinimumWidth(200);
+    this->ui->description->setMinimumHeight(430);
+//    this->setAttribute(Qt::WA_NoBackground,true);
     this->show();
 }
 
@@ -47,4 +49,8 @@ void NameAndDescriptionWidget::indexChange(int index)
     this->ui->description->setText(description);
     delete file;
 
+}
+
+void NameAndDescriptionWidget::paintEvent(QPaintEvent *e)
+{
 }
