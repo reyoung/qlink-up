@@ -23,11 +23,14 @@ MainWindow::MainWindow(QWidget *parent) :
     this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
 
     this->setWindowTitle(tr("QLink-Up"));
-
+    //Name And Description
+    //and Handle the signal from playwidget
     this->nameNDescriptionWidget = new NameAndDescriptionWidget(this);
     this->m_ui->nameAndDescription->addWidget(this->nameNDescriptionWidget);
     this->connect(this->playWidget,SIGNAL(indexChange(int)),this->nameNDescriptionWidget,SLOT(indexChange(int)));
 
+    //Test the Background
+    this->setAttribute(Qt::WA_NoBackground,true);
     //For Debug Only
     this->timeLine->setTime(300);
 }
@@ -65,4 +68,27 @@ void MainWindow::bgmFinishSlot()
 {
     this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
     this->mediaObject->play();
+}
+
+void MainWindow::paintEvent(QPaintEvent *e)
+{
+    QPainter painter(this);
+    painter.setPen(Qt::NoPen);
+    painter.setBrush(QBrush(QColor(0,0,0)));
+    painter.drawRect(0,0,this->width(),this->height());
+    QPixmap currentLevel(tr("BG/level0.jpg"));
+
+    int currentWidth = currentLevel.width();
+    int currentHeight = currentLevel.height()-this->menuBar()->height();
+    int deltaWidth,deltaHeight;
+    for(;;){
+        deltaWidth = this->width()-currentWidth;
+        deltaHeight = this->height() - currentHeight;
+        if(deltaWidth>=0&&deltaHeight>=0)break;
+        currentWidth*=0.95;
+        currentHeight*=0.95;
+    }
+    currentLevel = currentLevel.scaled(currentWidth,currentHeight);
+    painter.drawPixmap(deltaWidth/2,this->menuBar()->height()/2+deltaHeight/2,currentWidth,currentHeight,currentLevel);
+    painter.end();
 }

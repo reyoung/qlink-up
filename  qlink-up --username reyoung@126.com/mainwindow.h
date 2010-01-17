@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QtGui/QMainWindow>
-
+#include <QPainter>
 
 #include <Phonon>
 
@@ -23,6 +23,7 @@ public:
 
 protected:
     void changeEvent(QEvent *e);
+    void paintEvent(QPaintEvent *e);
 private slots:
     //BGM Play Or Pause
     void bgmSlot();

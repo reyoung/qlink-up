@@ -19,6 +19,7 @@ public slots:
     void indexChange(int index);
 protected:
     void changeEvent(QEvent *e);
+    void paintEvent(QPaintEvent *e);
 
 private:
     Ui::NameAndDescriptionWidget *ui;
