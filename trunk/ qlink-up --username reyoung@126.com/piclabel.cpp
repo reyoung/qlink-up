@@ -12,15 +12,14 @@ PicLabel::PicLabel(QWidget *parent,const int& index) :
     QLabel(parent)
 {
     this->data = new privateData;
+    this->data->isPressed = false;
     this->setIndex(index);
 
 }
 void PicLabel::setIndex(const int &index)
 {
     this->data->m_index = index;
-    this->setPixmap(QPixmap(tr("PIC/%1.bmp").arg(index)));
-    this->data->origin = this->pixmap()->toImage();
-
+    this->data->origin = QImage(tr("PIC/%1.bmp").arg(index));
     this->data->gray = this->data->origin;
     for(int i=0;i<this->data->gray.width();i++)
     {
