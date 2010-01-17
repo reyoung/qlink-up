@@ -13,7 +13,7 @@ Q_OBJECT
     struct privateData;
 public:
 
-    explicit PicLabel(QWidget *parent = 0);
+    explicit PicLabel(QWidget *parent = 0,const int& index = -1);
     ~PicLabel();
     int getIndex()const;
     bool isPressed();

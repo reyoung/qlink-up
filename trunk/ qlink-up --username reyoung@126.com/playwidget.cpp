@@ -8,9 +8,8 @@ PlayWidget::PlayWidget(QWidget *parent) :
     ui->setupUi(this);
     this->setMaximumSize(640,480);
     this->setMinimumSize(640,480);
-    this->test = new PicLabel(this);
+    this->test = new PicLabel(this,3);
     this->test->move(320,240);
-    this->test->setIndex(0);
     this->connect(test,SIGNAL(pressIndex(int)),this,SIGNAL(indexChange(int)));
 }
 

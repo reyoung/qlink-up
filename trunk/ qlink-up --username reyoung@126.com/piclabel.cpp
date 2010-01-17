@@ -8,10 +8,11 @@ struct PicLabel::privateData
     QImage gray;
 };
 
-PicLabel::PicLabel(QWidget *parent) :
+PicLabel::PicLabel(QWidget *parent,const int& index) :
     QLabel(parent)
 {
     this->data = new privateData;
+    this->setIndex(index);
 
 }
 void PicLabel::setIndex(const int &index)
