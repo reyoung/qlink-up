@@ -66,8 +66,7 @@ void MainWindow::bgmSlot()
 //For BGM Loop
 void MainWindow::bgmFinishSlot()
 {
-    this->mediaObject->setCurrentSource(Phonon::MediaSource("BGM/BGM.mp3"));
-    this->mediaObject->play();
+    this->mediaObject->enqueue(Phonon::MediaSource("BGM/BGM.mp3"));
 }
 
 void MainWindow::paintEvent(QPaintEvent *e)
