@@ -24,6 +24,7 @@ void TimeLine::setTime(const unsigned int &sec)
 }
 void TimeLine::paintEvent(QPaintEvent *e)
 {
+    if(this->privateData->currentTime==-1)return;
     QPainter* painter;
     painter = new QPainter(this);
     //delete the black edge of time line;

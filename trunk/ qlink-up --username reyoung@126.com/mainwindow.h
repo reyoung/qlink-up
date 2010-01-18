@@ -3,6 +3,9 @@
 
 #include <QtGui/QMainWindow>
 #include <QPainter>
+#include <QMessageBox>
+
+#include <math.h>
 
 #include <Phonon>
 
@@ -20,7 +23,8 @@ class MainWindow : public QMainWindow {
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
+signals:
+    void levelChange(int l);
 protected:
     void changeEvent(QEvent *e);
     void paintEvent(QPaintEvent *e);
@@ -29,6 +33,12 @@ private slots:
     void bgmSlot();
     //For BGM Loop
     void bgmFinishSlot();
+    //For new game
+    void newGame();
+    //GameOver Slot
+    void gameOver();
+
+
 private:
     Phonon::MediaObject* mediaObject;
     Phonon::AudioOutput* audioOutput;
@@ -37,6 +47,8 @@ private:
     PlayWidget* playWidget;
     TimeLine* timeLine;
     NameAndDescriptionWidget* nameNDescriptionWidget;
+
+    int level;
 };
 
 #endif // MAINWINDOW_H

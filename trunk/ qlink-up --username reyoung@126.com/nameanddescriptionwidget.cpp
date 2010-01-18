@@ -34,7 +34,7 @@ void NameAndDescriptionWidget::init()
     QFont temp;
     temp.setPixelSize(18);
     this->ui->description->setFont(temp);
-//    this->setAttribute(Qt::WA_NoBackground,true);
+    this->indexChange(-1);
     this->show();
 }
 
