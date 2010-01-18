@@ -17,6 +17,7 @@ public:
     ~PicLabel();
     int getIndex()const;
     bool isPressed();
+    void setPressed(bool pressed);
 signals:
     void pressIndex(int index);
 public slots:

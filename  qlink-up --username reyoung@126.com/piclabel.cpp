@@ -73,3 +73,8 @@ inline void PicLabel::f_paint()
         emit pressIndex(this->data->m_index);
     }
 }
+void PicLabel::setPressed(bool pressed)
+{
+    this->data->isPressed = pressed;
+    this->f_paint();
+}

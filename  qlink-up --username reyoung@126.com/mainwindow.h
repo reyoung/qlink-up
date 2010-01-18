@@ -37,7 +37,8 @@ private slots:
     void newGame();
     //GameOver Slot
     void gameOver();
-
+    //For GameWin
+    void winSlot();
 
 private:
     Phonon::MediaObject* mediaObject;
