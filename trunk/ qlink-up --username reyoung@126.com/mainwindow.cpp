@@ -39,6 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->connect(this,SIGNAL(levelChange(int)),this->playWidget,SLOT(levelChange(int)));
     //connect time up
     this->connect(this->timeLine,SIGNAL(timeOut()),this,SLOT(gameOver()));
+    this->connect(this->playWidget,SIGNAL(win()),this,SLOT(winSlot()));
 }
 
 MainWindow::~MainWindow()
@@ -111,4 +112,15 @@ void MainWindow::gameOver()
     QMessageBox::warning(this,tr("Game Over"),tr("Time's up!\nGame Over!"));
     this->level = -1;
     this->playWidget->deletePics();
+}
+
+void MainWindow::winSlot()
+{
+
+    QMessageBox::warning(this,tr("Level Up!"),tr("Level Clear!"));
+
+    this->level = -1;
+    this->timeLine->resetTime();
+    this->playWidget->deletePics();
+    this->nameNDescriptionWidget->indexChange(-1);
 }
