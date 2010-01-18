@@ -15,6 +15,8 @@ PicLabel::PicLabel(QWidget *parent,const int& index) :
     this->data->isPressed = false;
     this->setIndex(index);
     this->setCursor(Qt::PointingHandCursor);
+    this->setMinimumSize(50,80);
+    this->setMaximumSize(50,80);
 
 }
 void PicLabel::setIndex(const int &index)

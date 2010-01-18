@@ -2,6 +2,7 @@
 #define PLAYWIDGET_H
 
 #include <QWidget>
+#include <QVector>
 #include "piclabel.h"
 
 namespace Ui {
@@ -13,6 +14,9 @@ class PlayWidget : public QWidget {
 public:
     PlayWidget(QWidget *parent = 0);
     ~PlayWidget();
+    void deletePics();
+public slots:
+    void levelChange(int level);
 signals:
     void indexChange(int index);
 protected:
@@ -20,7 +24,12 @@ protected:
 
 private:
     Ui::PlayWidget *ui;
-    PicLabel* test;
+    char map[14][6];
+    QVector <QVector<PicLabel* > > picLabels;
+
+    void levelInit();
+    void picInit(const char&x1,const char& y1,const char &x2,const char& y2);
+
 };
 
 #endif // PLAYWIDGET_H

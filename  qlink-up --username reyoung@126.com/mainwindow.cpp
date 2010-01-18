@@ -29,15 +29,20 @@ MainWindow::MainWindow(QWidget *parent) :
     this->m_ui->nameAndDescription->addWidget(this->nameNDescriptionWidget);
     this->connect(this->playWidget,SIGNAL(indexChange(int)),this->nameNDescriptionWidget,SLOT(indexChange(int)));
 
-    //Test the Background
+    //The Background
     this->setAttribute(Qt::WA_NoBackground,true);
-    //For Debug Only
-    this->timeLine->setTime(300);
+
+    this->level = -1;
+
+    this->connect(this->m_ui->newGameButton,SIGNAL(clicked()),this,SLOT(newGame()));
+    this->connect(this->m_ui->actionNew,SIGNAL(triggered()),this,SLOT(newGame()));
+    this->connect(this,SIGNAL(levelChange(int)),this->playWidget,SLOT(levelChange(int)));
+    //connect time up
+    this->connect(this->timeLine,SIGNAL(timeOut()),this,SLOT(gameOver()));
 }
 
 MainWindow::~MainWindow()
 {
-    delete this->timeLine;
     delete m_ui;
 }
 
@@ -75,7 +80,7 @@ void MainWindow::paintEvent(QPaintEvent *e)
     painter.setPen(Qt::NoPen);
     painter.setBrush(QBrush(QColor(0,0,0)));
     painter.drawRect(0,0,this->width(),this->height());
-    QPixmap currentLevel(tr("BG/level0.jpg"));
+    QPixmap currentLevel(tr("BG/level%1.jpg").arg(this->level));
 
     int currentWidth = currentLevel.width();
     int currentHeight = currentLevel.height()-this->menuBar()->height();
@@ -90,4 +95,20 @@ void MainWindow::paintEvent(QPaintEvent *e)
     currentLevel = currentLevel.scaled(currentWidth,currentHeight);
     painter.drawPixmap(deltaWidth/2,this->menuBar()->height()/2+deltaHeight/2,currentWidth,currentHeight,currentLevel);
     painter.end();
+}
+
+void MainWindow::newGame()
+{
+    this->level = 0;
+    this->timeLine->setTime(10*pow(2,level));
+    this->update();
+    emit levelChange(this->level);
+}
+
+void MainWindow::gameOver()
+{
+    this->timeLine->resetTime();
+    QMessageBox::warning(this,tr("Game Over"),tr("Time's up!\nGame Over!"));
+    this->level = -1;
+    this->playWidget->deletePics();
 }
