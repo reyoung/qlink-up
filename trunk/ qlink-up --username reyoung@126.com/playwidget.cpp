@@ -24,6 +24,7 @@ PlayWidget::PlayWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::PlayWidget)
 {
+    srand(time(0));
     ui->setupUi(this);
     this->currentIndex = 0;
     this->setMaximumSize(640,480);
@@ -63,14 +64,22 @@ void PlayWidget::changeEvent(QEvent *e)
 void PlayWidget::levelChange(int level)
 {
     this->deletePics();
+    this->resetMap();
     switch(level)
     {
     case 0:
         this->picInit(6,2,8,4);
+        break;
+    case 1:
+        this->picInit(5,2,8,4);
+        break;
+    case 2:
+        this->picInit(5,2,9,4);
     }
 
     this->levelInit();
     this->currentIndex = 0;
+    if(this->needSwitch())this->toSwitch();
 }
 
 void PlayWidget::deletePics()
@@ -116,10 +125,10 @@ void PlayWidget::levelInit()
     {
         for( qint8 j=0;j<2;)
         {
-            int rand = qrand()%count;
-            if(current[rand]->getIndex()==-1)
+            int rand1 = rand()%count;
+            if(current[rand1]->getIndex()==-1)
             {
-                current[rand]->setIndex(i);
+                current[rand1]->setIndex(i);
                 j++;
             }
         }
@@ -132,7 +141,21 @@ void PlayWidget::levelInit()
 
 bool PlayWidget::canExterminate(const qint8 &x1, const qint8 &y1, const qint8 &x2, qint8 y2)
 {
-    if(this->picLabels[x1][y1]->getIndex()!=this->picLabels[x2][y2]->getIndex())return false;
+    /*****For Debug Only
+    qDebug()<<"***********************";
+    qDebug()<<x1<<" "<<y1;
+    qDebug()<<x2<<" "<<y2;
+    qDebug()<<"In Points";
+    qDebug()<<endl;
+    ****************************/
+
+    if(x1==x2&&y1==y2)return false;
+    else if(this->picLabels[x1][y1]==0||this->picLabels[x2][y2]==0)return false;
+    else if(this->picLabels[x1][y1]->getIndex()!=this->picLabels[x2][y2]->getIndex())return false;
+    else if(point(x1,y1)==point(x2+1,y2)||
+       point(x1,y1)==point(x2-1,y2)||
+       point(x1,y1)==point(x2,y2+1)||
+       point(x1,y1)==point(x2,y2-1))return true;
     this->enabelPoints.clear();
     qint8 t_x1 = x1;
     qint8 t_y1 = y1;
@@ -174,7 +197,7 @@ bool PlayWidget::canExterminate(const qint8 &x1, const qint8 &y1, const qint8 &x
         else break;
     }
     t_y1 = y1+1;
-    for(;t_y1<6;t_y1--)
+    for(;t_y1<6;t_y1++)
     {
         if(this->map[t_x1][t_y1]==-1)
         {
@@ -185,11 +208,86 @@ bool PlayWidget::canExterminate(const qint8 &x1, const qint8 &y1, const qint8 &x
         }
         else break;
     }
-    if(point(x1,y1)==point(x2+1,y2)||
-       point(x1,y1)==point(x2-1,y2)||
-       point(x1,y1)==point(x2,y2+1)||
-       point(x1,y1)==point(x2,y2-1))return true;
-    else return false;
+
+    if( x2==x1&&(this->findPoint( point( x2,y2-1 ) )
+        ||this->findPoint( point( x2,y2+1 ) )))
+    {
+        return true;
+    }
+    else if( y2==y1&&(this->findPoint( point( x2-1,y2 ) )
+        ||this->findPoint( point( x2+1,y2 ) )))
+    {
+        return true;
+    }
+    else
+    {
+        QVector <point>points;
+        qint8 t_x2 = x2;
+        qint8 t_y2 = y2;
+
+        t_x2--;
+        for(;t_x2>=0;t_x2--)
+        {
+            if(this->map[t_x2][t_y2]==-1)
+            {
+                point a;
+                a.x = t_x2;
+                a.y = t_y2;
+                points.push_back(a);
+            }
+            else break;
+        }
+        t_x2 = x2+1;
+        for(;t_x2<14;t_x2++)
+        {
+            if(this->map[t_x2][t_y2]==-1)
+            {
+                point a;
+                a.x = t_x2;
+                a.y = t_y2;
+                points.push_back(a);
+            }
+            else break;
+        }
+        t_x2 = x2;
+        t_y2--;
+        for(;t_y2>=0;t_y2--)
+        {
+            if(this->map[t_x2][t_y2]==-1)
+            {
+                point a;
+                a.x = t_x2;
+                a.y = t_y2;
+                points.push_back(a);
+            }
+            else break;
+        }
+        t_y2 = y2+1;
+        for(;t_y2<6;t_y2++)
+        {
+            if(this->map[t_x2][t_y2]==-1)
+            {
+                point a;
+                a.x = t_x2;
+                a.y = t_y2;
+                points.push_back(a);
+            }
+            else break;
+        }
+        foreach(point a,points)
+        {
+
+            if(this->findPoint(a))return true;
+        }
+        foreach(point a,points)
+        {
+            if(this->canExterminateAssist(a))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 bool PlayWidget::findPoint(const point &a)
@@ -205,9 +303,11 @@ bool PlayWidget::findPoint(const point &a)
 
 void PlayWidget::handlePush(int i)
 {
-    if(i==-1)this->currentIndex--;
+    if(i==-1&&this->currentIndex!=0)
+    {
+        this->currentIndex--;
+    }
     else this->currentIndex++;
-    if(this->currentIndex <0)this->currentIndex = 0;
     if(this->currentIndex == 2)
     {
         this->currentIndex = 0;
@@ -228,9 +328,15 @@ void PlayWidget::handlePush(int i)
         {
             this->map[temp[0].x][temp[0].y]=-1;
             this->map[temp[1].x][temp[1].y]=-1;
-            this->picLabels[temp[0].x][temp[0].y]->hide();
-            this->picLabels[temp[1].x][temp[1].y]->hide();
+            delete this->picLabels[temp[0].x][temp[0].y];
+            this->picLabels[temp[0].x][temp[0].y] = 0;
+            delete this->picLabels[temp[1].x][temp[1].y];
+            this->picLabels[temp[1].x][temp[1].y] = 0;
             if(this->isWin()) emit win();
+            else
+            {
+                if(this->needSwitch())this->toSwitch();
+            }
         }
         else
         {
@@ -243,4 +349,118 @@ bool PlayWidget::isWin()
         for(qint8 j=0;j<6;j++)
             if(this->map[i][j]!=-1)return false;
     return true;
+}
+
+void PlayWidget::resetMap()
+{
+    for(qint8 i = 0;i<14;i++)
+        for(qint8 j = 0;j<6;j++)
+            this->map[i][j]=-1;
+}
+
+bool PlayWidget::canExterminateAssist(point a)
+{
+    qint8 x,y;
+    x = a.x-1;
+    y = a.y;
+    for(;x>=0;x--)
+    {
+        if(this->map[x][y]==-1)
+        {
+            if(this->findPoint(point(x,y)))
+            {
+                return true;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+    x = a.x+1;
+    for(;x<14;x++)
+    {
+        if(this->map[x][y]==-1)
+        {
+            if(this->findPoint(point(x,y)))
+            {
+                return true;
+            }
+        }
+        else break;
+    }
+    x =a.x;
+    for(y--;y>=0;y--)
+    {
+
+        if(this->map[x][y]==-1)
+        {
+            if(this->findPoint(point(x,y)))
+            {
+                return true;
+            }
+        }
+        else break;
+    }
+    y = a.y;
+    for(y++;y<6;y++)
+    {
+        if(this->map[x][y]==-1)
+        {
+            if(this->findPoint(point(x,y)))
+            {
+                return true;
+            }
+        }
+        else break;
+    }
+    return false;
+}
+
+bool PlayWidget::needSwitch()
+{
+    for(qint8 i = 0; i< 14;i++)
+    {
+        for(qint8 j = 0; j<6;j++)
+        {
+            for(qint8 k = 0;k<14;k++)
+            {
+                for(qint8 l=0;l<6;l++)
+                {
+                    if(this->canExterminate(i,j,k,l))return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+void PlayWidget::toSwitch()
+{
+    do{
+        PicLabel* a;
+        PicLabel* b;
+        qint8 ax,ay,bx,by;
+        do
+        {
+            ax = rand()%14;
+            ay = rand()%6;
+        }while(map[ax][ay]==-1);
+        a = picLabels[ax][ay];
+        do
+        {
+            bx = rand()%14;
+            by = rand()%6;
+            if(bx==ax&&by==ay)continue;
+        }while(map[bx][by]==-1);
+        b = picLabels[bx][by];
+        this->map[bx][by] = b->getIndex();
+        this->map[ax][ay] = a->getIndex();
+        QPoint temp;
+        temp = a->pos();
+        a->move(b->pos());
+        b->move(temp);
+        this->picLabels[ax][ay] = b;
+        this->picLabels[bx][by] = a;
+    }while(this->needSwitch());
 }
