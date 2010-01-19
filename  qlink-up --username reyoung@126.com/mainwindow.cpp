@@ -36,8 +36,17 @@ MainWindow::MainWindow(QWidget *parent) :
     this->connect(this->m_ui->actionNew,SIGNAL(triggered()),this,SLOT(newGame()));
     this->connect(this,SIGNAL(levelChange(int)),this->playWidget,SLOT(levelChange(int)));
     //connect time up
+    this->setMinimumSize(860,580);
+    this->setMaximumSize(860,580);
+
+    this->score = 0;
+    this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
+
     this->connect(this->timeLine,SIGNAL(timeOut()),this,SLOT(gameOver()));
     this->connect(this->playWidget,SIGNAL(win()),this,SLOT(winSlot()));
+    this->connect(this->m_ui->pauseButton,SIGNAL(clicked()),this->timeLine,SLOT(pause()));
+    this->connect(this->m_ui->pauseButton,SIGNAL(clicked()),this->playWidget,SLOT(pause()));
+    this->connect(this->playWidget,SIGNAL(exterminate()),this,SLOT(cancellation()));
 }
 
 MainWindow::~MainWindow()
@@ -115,7 +124,8 @@ void MainWindow::gameOver()
 void MainWindow::winSlot()
 {
 
-    if(level+1==3)
+    this->timeLine->pause();
+    if(level+1==4)
     {
         this->timeLine->resetTime();
         QMessageBox::warning(this,tr("Level Up!"),tr("Level Clear!"));
@@ -128,6 +138,16 @@ void MainWindow::winSlot()
         QMessageBox::warning(this,tr("Level Up!"),tr("Level Up!"));
         this->timeLine->setTime(10*pow(2,level));
         this->update();
+        this->score +=this->timeLine->getCurrentTime()*5;
+        this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
         emit levelChange(this->level);
     }
+    this->timeLine->pause();
+}
+
+void MainWindow::cancellation()
+{
+    this->score += 10;
+    this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
+    this->timeLine->timePlusPlus();
 }

@@ -10,5 +10,4 @@ INPUT(
 ./debug\moc_piclabel.o
 ./debug\moc_timeline.o
 ./debug\moc_nameanddescriptionwidget.o
-./debug\qrc_Resources.o
 );

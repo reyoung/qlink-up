@@ -6,6 +6,7 @@ struct PicLabel::privateData
     bool isPressed;
     QImage origin;
     QImage gray;
+    bool isEnableClick;
 };
 
 PicLabel::PicLabel(QWidget *parent,const int& index) :
@@ -13,6 +14,7 @@ PicLabel::PicLabel(QWidget *parent,const int& index) :
 {
     this->data = new privateData;
     this->data->isPressed = false;
+    this->data->isEnableClick = true;
     this->setIndex(index);
     this->setCursor(Qt::PointingHandCursor);
     this->setMinimumSize(50,80);
@@ -48,6 +50,7 @@ int PicLabel::getIndex()const
 
 void PicLabel::mousePressEvent(QMouseEvent *ev)
 {
+    if(!this->data->isEnableClick)return;
 
     this->data->isPressed = !this->data->isPressed;
 
@@ -77,4 +80,14 @@ void PicLabel::setPressed(bool pressed)
 {
     this->data->isPressed = pressed;
     this->f_paint();
+}
+
+bool PicLabel::isEnableClick()const
+{
+    return this->data->isEnableClick;
+}
+
+void PicLabel::setEnableClick(bool en)
+{
+    this->data->isEnableClick = en;
 }

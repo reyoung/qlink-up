@@ -14,6 +14,10 @@ public:
     explicit TimeLine(QWidget *parent = 0);
     //to set the time by second
     void setTime(const unsigned int& sec);
+    //increase time
+    void timePlusPlus();
+    //get currentTime;
+    int getCurrentTime();
     ~TimeLine();
 signals:
     //time out signal
@@ -21,6 +25,9 @@ signals:
 public slots:
     //reset the timeline to the maxsize
     void resetTime();
+    //pause
+    void pause();
+
 protected:
     //paint the timeline
     void paintEvent(QPaintEvent * e);
