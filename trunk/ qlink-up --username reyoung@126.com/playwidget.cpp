@@ -68,13 +68,20 @@ void PlayWidget::levelChange(int level)
     switch(level)
     {
     case 0:
-        this->picInit(6,2,8,4);
+        this->picInit(3,1,9,5);
         break;
     case 1:
-        this->picInit(5,2,8,4);
+        this->picInit(4,1,10,5);
         break;
     case 2:
-        this->picInit(5,2,9,4);
+        this->picInit(3,1,11,5);
+        break;
+    case 3:
+        this->picInit(2,1,12,5);
+        break;
+    case 4:
+        this->picInit(1,1,12,6);
+        break;
     }
 
     this->levelInit();
@@ -326,12 +333,15 @@ void PlayWidget::handlePush(int i)
         }
         if(this->canExterminate(temp[0].x,temp[0].y,temp[1].x,temp[1].y))
         {
+            QSound sound("Sound/Right.wav",this);
+            sound.play();
             this->map[temp[0].x][temp[0].y]=-1;
             this->map[temp[1].x][temp[1].y]=-1;
             delete this->picLabels[temp[0].x][temp[0].y];
             this->picLabels[temp[0].x][temp[0].y] = 0;
             delete this->picLabels[temp[1].x][temp[1].y];
             this->picLabels[temp[1].x][temp[1].y] = 0;
+            emit exterminate();
             if(this->isWin()) emit win();
             else
             {
@@ -340,6 +350,8 @@ void PlayWidget::handlePush(int i)
         }
         else
         {
+            QSound sound("Sound/Wrong.wav",this);
+            sound.play();
         }
     }
 }
@@ -463,4 +475,17 @@ void PlayWidget::toSwitch()
         this->picLabels[ax][ay] = b;
         this->picLabels[bx][by] = a;
     }while(this->needSwitch());
+}
+
+void PlayWidget::pause()
+{
+
+    for(qint8 i=0;i<14;i++ )
+    {
+        for(qint8 j=0;j<6;j++)
+        {
+            if(this->picLabels[i][j]!=NULL)
+                this->picLabels[i][j]->setEnableClick(!this->picLabels[i][j]->isEnableClick());
+        }
+    }
 }

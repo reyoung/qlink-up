@@ -18,6 +18,8 @@ public:
     int getIndex()const;
     bool isPressed();
     void setPressed(bool pressed);
+    bool isEnableClick()const;
+    void setEnableClick(bool en);
 signals:
     void pressIndex(int index);
 public slots:

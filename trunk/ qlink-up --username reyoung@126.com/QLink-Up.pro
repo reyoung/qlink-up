@@ -13,5 +13,5 @@ FORMS += mainwindow.ui \
     playwidget.ui \
     nameanddescriptionwidget.ui
 DESTDIR += Build
-RESOURCES += Resources.qrc
+RESOURCES += 
 QT += phonon

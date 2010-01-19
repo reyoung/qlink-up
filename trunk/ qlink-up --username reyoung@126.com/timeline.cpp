@@ -4,6 +4,7 @@ struct TimeLine::TimeLinePrivate
 {
     int time;//Total time
     int currentTime;//Current Time
+    bool isPause;
 };
 TimeLine::TimeLine(QWidget *parent) :
     QLabel(parent)
@@ -11,6 +12,7 @@ TimeLine::TimeLine(QWidget *parent) :
     this->setMaximumSize(640,20);
     this->setMinimumSize(640,20);
     this->privateData = new TimeLine::TimeLinePrivate;
+    this->privateData->isPause = false;
     this->privateData->currentTime = -1;
     QTimer* timer;
     timer = new QTimer(this);
@@ -48,6 +50,7 @@ void TimeLine::resetTime()
 
 void TimeLine::timerSlot()
 {
+    if(this->privateData->isPause)return;
     if(this->privateData->currentTime>0)
         this->privateData->currentTime--;
     else if(this->privateData->currentTime==0)
@@ -58,4 +61,24 @@ void TimeLine::timerSlot()
 TimeLine::~TimeLine()
 {
     delete this->privateData;
+}
+
+void TimeLine::pause()
+{
+    this->privateData->isPause = !this->privateData->isPause;
+}
+
+void TimeLine::timePlusPlus()
+{
+    this->privateData->currentTime+= 3;
+    if(this->privateData->currentTime>this->privateData->time)
+    {
+        this->privateData->currentTime = this->privateData->time;
+    }
+    this->update();
+}
+
+int TimeLine::getCurrentTime()
+{
+    return this->privateData->currentTime;
 }

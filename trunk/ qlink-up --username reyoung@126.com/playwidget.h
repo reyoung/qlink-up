@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QPoint>
 #include <time.h>
+#include <QSound>
 #include "piclabel.h"
 
 namespace Ui {
@@ -20,8 +21,10 @@ public:
     void deletePics();
 public slots:
     void levelChange(int level);
+    void pause();
 signals:
     void win();
+    void exterminate();
     void indexChange(int index);
 protected:
     void changeEvent(QEvent *e);

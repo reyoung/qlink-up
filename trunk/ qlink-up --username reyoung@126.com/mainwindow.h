@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QMessageBox>
 
+
 #include <math.h>
 
 #include <Phonon>
@@ -39,7 +40,8 @@ private slots:
     void gameOver();
     //For GameWin
     void winSlot();
-
+    //Handle the picLabel exterminate
+    void cancellation();
 private:
     Phonon::MediaObject* mediaObject;
     Phonon::AudioOutput* audioOutput;
@@ -49,6 +51,7 @@ private:
     TimeLine* timeLine;
     NameAndDescriptionWidget* nameNDescriptionWidget;
 
+    unsigned int score;
     int level;
 };
 

@@ -41,6 +41,13 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pauseButton">
+          <property name="text">
+           <string>Pause</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="horizontalSpacer">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -54,7 +61,7 @@
          </spacer>
         </item>
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLabel" name="scoreLabel">
           <property name="text">
            <string>Score:</string>
           </property>
