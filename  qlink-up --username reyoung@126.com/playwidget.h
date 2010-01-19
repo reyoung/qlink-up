@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QVector>
+#include <QPoint>
+#include <time.h>
 #include "piclabel.h"
 
 namespace Ui {
@@ -34,11 +36,14 @@ private:
     QVector <point > enabelPoints;
 
     bool isWin();
+    bool canExterminateAssist(point a);
     bool findPoint(const point& a);
     bool canExterminate(const qint8& x1,const qint8 &y1,const qint8& x2,const qint8 y2);
+    bool needSwitch();
     void levelInit();
     void picInit(const qint8&x1,const qint8& y1,const qint8 &x2,const qint8& y2);
-
+    void resetMap();
+    void toSwitch();
 };
 
 #endif // PLAYWIDGET_H

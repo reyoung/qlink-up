@@ -14,14 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
     this->m_ui->actionMusic_On_Off->setCheckable(true);
     this->connect(this->m_ui->actionMusic_On_Off,SIGNAL(triggered(bool)),
                   this,SLOT(bgmSlot()));
-
     //BGM
     this->audioOutput = new Phonon::AudioOutput(Phonon::VideoCategory,this);
     this->mediaObject = new Phonon::MediaObject(this);
     Phonon::createPath(this->mediaObject,this->audioOutput);
 
     this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
-
     this->setWindowTitle(tr("QLink-Up"));
     //Name And Description
     //and Handle the signal from playwidget
@@ -117,10 +115,19 @@ void MainWindow::gameOver()
 void MainWindow::winSlot()
 {
 
-    QMessageBox::warning(this,tr("Level Up!"),tr("Level Clear!"));
-
-    this->level = -1;
-    this->timeLine->resetTime();
-    this->playWidget->deletePics();
-    this->nameNDescriptionWidget->indexChange(-1);
+    if(level+1==3)
+    {
+        this->timeLine->resetTime();
+        QMessageBox::warning(this,tr("Level Up!"),tr("Level Clear!"));
+        this->level = -1;
+        this->update();
+    }
+    else
+    {
+        this->level++;
+        QMessageBox::warning(this,tr("Level Up!"),tr("Level Up!"));
+        this->timeLine->setTime(10*pow(2,level));
+        this->update();
+        emit levelChange(this->level);
+    }
 }
