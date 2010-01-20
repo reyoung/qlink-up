@@ -12,14 +12,13 @@ MainWindow::MainWindow(QWidget *parent) :
     this->timeLine->setText(tr("This is the Time Line , Need to be build"));
     this->m_ui->timeLineLayout->addWidget(this->timeLine);
     this->m_ui->actionMusic_On_Off->setCheckable(true);
-    this->connect(this->m_ui->actionMusic_On_Off,SIGNAL(triggered(bool)),
-                  this,SLOT(bgmSlot()));
     //BGM
     this->audioOutput = new Phonon::AudioOutput(Phonon::VideoCategory,this);
     this->mediaObject = new Phonon::MediaObject(this);
     Phonon::createPath(this->mediaObject,this->audioOutput);
 
     this->connect(this->mediaObject,SIGNAL(aboutToFinish()),this,SLOT(bgmFinishSlot()));
+    
     this->setWindowTitle(tr("QLink-Up"));
     //Name And Description
     //and Handle the signal from playwidget
@@ -32,8 +31,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->level = -1;
 
-    this->connect(this->m_ui->newGameButton,SIGNAL(clicked()),this,SLOT(newGame()));
-    this->connect(this->m_ui->actionNew,SIGNAL(triggered()),this,SLOT(newGame()));
     this->connect(this,SIGNAL(levelChange(int)),this->playWidget,SLOT(levelChange(int)));
     //connect time up
     this->setMinimumSize(860,580);
@@ -66,7 +63,7 @@ void MainWindow::changeEvent(QEvent *e)
     }
 }
 //BGM Play Or Pause
-void MainWindow::bgmSlot()
+void MainWindow::on_actionMusic_On_Off_triggered()
 {
     if(this->m_ui->actionMusic_On_Off->isChecked())
     {
@@ -105,7 +102,7 @@ void MainWindow::paintEvent(QPaintEvent *e)
     painter.end();
 }
 
-void MainWindow::newGame()
+void MainWindow::on_newGameButton_clicked()
 {
     this->level = 0;
     this->timeLine->setTime(10*pow(2,level));
@@ -150,4 +147,9 @@ void MainWindow::cancellation()
     this->score += 10;
     this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
     this->timeLine->timePlusPlus();
+}
+
+void MainWindow::on_actionNew_triggered()
+{
+    this->on_newGameButton_clicked();
 }

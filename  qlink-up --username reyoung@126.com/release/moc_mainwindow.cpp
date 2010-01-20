@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue Jan 19 21:47:01 2010
+** Created: Wed Jan 20 22:24:47 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -35,18 +35,21 @@ static const uint qt_meta_data_MainWindow[] = {
 
  // slots: signature, parameters, type, tag, flags
       31,   11,   11,   11, 0x08,
-      41,   11,   11,   11, 0x08,
-      57,   11,   11,   11, 0x08,
-      67,   11,   11,   11, 0x08,
-      78,   11,   11,   11, 0x08,
-      88,   11,   11,   11, 0x08,
+      65,   11,   11,   11, 0x08,
+      81,   11,   11,   11, 0x08,
+     108,   11,   11,   11, 0x08,
+     133,   11,   11,   11, 0x08,
+     144,   11,   11,   11, 0x08,
+     154,   11,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
-    "MainWindow\0\0l\0levelChange(int)\0bgmSlot()\0"
-    "bgmFinishSlot()\0newGame()\0gameOver()\0"
+    "MainWindow\0\0l\0levelChange(int)\0"
+    "on_actionMusic_On_Off_triggered()\0"
+    "bgmFinishSlot()\0on_newGameButton_clicked()\0"
+    "on_actionNew_triggered()\0gameOver()\0"
     "winSlot()\0cancellation()\0"
 };
 
@@ -80,15 +83,16 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: levelChange((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: bgmSlot(); break;
+        case 1: on_actionMusic_On_Off_triggered(); break;
         case 2: bgmFinishSlot(); break;
-        case 3: newGame(); break;
-        case 4: gameOver(); break;
-        case 5: winSlot(); break;
-        case 6: cancellation(); break;
+        case 3: on_newGameButton_clicked(); break;
+        case 4: on_actionNew_triggered(); break;
+        case 5: gameOver(); break;
+        case 6: winSlot(); break;
+        case 7: cancellation(); break;
         default: ;
         }
-        _id -= 7;
+        _id -= 8;
     }
     return _id;
 }
