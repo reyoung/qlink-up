@@ -31,11 +31,12 @@ protected:
     void paintEvent(QPaintEvent *e);
 private slots:
     //BGM Play Or Pause
-    void bgmSlot();
+    void on_actionMusic_On_Off_triggered();
     //For BGM Loop
     void bgmFinishSlot();
     //For new game
-    void newGame();
+    void on_newGameButton_clicked();
+    void on_actionNew_triggered();
     //GameOver Slot
     void gameOver();
     //For GameWin
