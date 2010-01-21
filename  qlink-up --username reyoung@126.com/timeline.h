@@ -16,6 +16,8 @@ public:
     void setTime(const unsigned int& sec);
     //increase time
     void timePlusPlus();
+    //decrease time
+    void timeSubSub();
     //get currentTime;
     int getCurrentTime();
     ~TimeLine();

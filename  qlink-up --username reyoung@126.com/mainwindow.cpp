@@ -38,6 +38,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->score = 0;
     this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
+    this->m_ui->promptButton->setEnabled(false);
+
 
     this->connect(this->timeLine,SIGNAL(timeOut()),this,SLOT(gameOver()));
     this->connect(this->playWidget,SIGNAL(win()),this,SLOT(winSlot()));
@@ -104,14 +106,18 @@ void MainWindow::paintEvent(QPaintEvent *e)
 
 void MainWindow::on_newGameButton_clicked()
 {
+    this->score = 0;
     this->level = 0;
-    this->timeLine->setTime(10*pow(2,level));
+    this->m_ui->promptButton->setEnabled(true);
+    this->timeLine->setTime(20*pow(2,level));
     this->update();
     emit levelChange(this->level);
 }
 
 void MainWindow::gameOver()
 {
+    this->m_ui->promptButton->setEnabled(false);
+    this->highScoreSlot();
     this->timeLine->resetTime();
     QMessageBox::warning(this,tr("Game Over"),tr("Time's up!\nGame Over!"));
     this->level = -1;
@@ -120,10 +126,13 @@ void MainWindow::gameOver()
 
 void MainWindow::winSlot()
 {
-
     this->timeLine->pause();
     if(level+1==4)
     {
+        this->m_ui->promptButton->setEnabled(false);
+        this->score +=this->timeLine->getCurrentTime()*5;
+        this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
+        this->highScoreSlot();
         this->timeLine->resetTime();
         QMessageBox::warning(this,tr("Level Up!"),tr("Level Clear!"));
         this->level = -1;
@@ -133,7 +142,7 @@ void MainWindow::winSlot()
     {
         this->level++;
         QMessageBox::warning(this,tr("Level Up!"),tr("Level Up!"));
-        this->timeLine->setTime(10*pow(2,level));
+        this->timeLine->setTime(20*pow(2,level));
         this->update();
         this->score +=this->timeLine->getCurrentTime()*5;
         this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
@@ -152,4 +161,17 @@ void MainWindow::cancellation()
 void MainWindow::on_actionNew_triggered()
 {
     this->on_newGameButton_clicked();
+}
+
+void MainWindow::on_promptButton_clicked()
+{
+    this->playWidget->getPrompt();
+    this->timeLine->timeSubSub();
+    this->score-=10;
+    this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
+}
+
+void MainWindow::highScoreSlot()
+{
+
 }
