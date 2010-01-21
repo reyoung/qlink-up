@@ -19,6 +19,7 @@ public:
     PlayWidget(QWidget *parent = 0);
     ~PlayWidget();
     void deletePics();
+    void getPrompt();
 public slots:
     void levelChange(int level);
     void pause();

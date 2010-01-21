@@ -5,7 +5,6 @@
 #include <QPainter>
 #include <QMessageBox>
 
-
 #include <math.h>
 
 #include <Phonon>
@@ -43,6 +42,10 @@ private slots:
     void winSlot();
     //Handle the picLabel exterminate
     void cancellation();
+    //For prompt pressed
+    void on_promptButton_clicked();
+    //For the High Score
+    void highScoreSlot();
 private:
     Phonon::MediaObject* mediaObject;
     Phonon::AudioOutput* audioOutput;

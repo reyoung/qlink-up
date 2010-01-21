@@ -489,3 +489,31 @@ void PlayWidget::pause()
         }
     }
 }
+
+void PlayWidget::getPrompt()
+{
+    point a,b;
+    for(qint8 i = 0; i< 14;i++)
+    {
+        for(qint8 j = 0; j<6;j++)
+        {
+            for(qint8 k = 0;k<14;k++)
+            {
+                for(qint8 l=0;l<6;l++)
+                {
+                    if(this->canExterminate(i,j,k,l))
+                    {
+                        a.x = i;
+                        a.y = j;
+                        b.x = k;
+                        b.y = l;
+                        goto outside;
+                    }
+            }
+            }
+        }
+    }
+    outside:
+        this->picLabels[a.x][a.y]->setPressed(true);
+        this->picLabels[b.x][b.y]->setPressed(true);
+}

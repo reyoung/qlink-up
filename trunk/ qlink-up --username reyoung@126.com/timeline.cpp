@@ -82,3 +82,13 @@ int TimeLine::getCurrentTime()
 {
     return this->privateData->currentTime;
 }
+
+void TimeLine::timeSubSub()
+{
+    this->privateData->currentTime-= 6;
+    if(this->privateData->currentTime!=-1&&this->privateData->currentTime<0)
+    {
+        this->privateData->currentTime = 0;
+    }
+    this->update();
+}
