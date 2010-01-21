@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'nameanddescriptionwidget.ui'
 **
-** Created: Thu Jan 21 10:49:50 2010
+** Created: Thu Jan 21 20:12:31 2010
 **      by: Qt User Interface Compiler version 4.6.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
