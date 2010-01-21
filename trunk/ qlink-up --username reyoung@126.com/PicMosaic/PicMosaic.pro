@@ -6,9 +6,11 @@ TEMPLATE = app
 SOURCES += main.cpp \
     picmosaic.cpp \
     mosaicthread.cpp \
-    block.cpp
+    block.cpp \
+    qtwin.cpp
 HEADERS += picmosaic.h \
     mosaicthread.h \
-    block.h
+    block.h \
+    qtwin.h
 FORMS += picmosaic.ui
-DESTDIR +=Build
+DESTDIR += Build
