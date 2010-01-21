@@ -1,0 +1,73 @@
+从Hello Qt开始
+首先开始先扯会淡。个人感觉，学Qt有两点是最重要的。第一、足够的懒。第二、足够的不服输。懒呢，是因为只有懒人才会喜欢Qt。Qt简洁高效时尚。如果你是一个学究级的人物，十分不推荐你Qt。MFC更适合你。背下来MFC那冗长无味的函数名绝对让你很有成就感。第二点嘛，编程都需要不服输，没什么别的意思。如果你没有自己debug的勇气，可以转别的行业了。
+
+闲言碎语不要讲，开始第一次Qt体验。
+
+首先，你需要下载qt的sdk(software development kits)。到现在Qt的最新版本是4.60，我自己的编译环境是Qt4.60RC+GCC4.40。如果这里的程序不通过，也很正常，可能是版本问题。但只要是Qt4应该都差不多。
+Qt的网站是qt.nokia.com，在download选项卡中，有win32的sdk，选择包括MinGW的全部软件包（大约是200多M的那个）。
+
+下载。安装。
+安装过程没什么新意，和装游戏差不多，安装就行了。
+如果你是linux，直接找Qt4-dev库，然后找个qcreator库就ok了，具体过程就不说了。
+
+安装部署完成。开始Program！
+打开Qt creator。
+Qt creator是Qt自带的IDE，当然，可以用VC等其他IDE来编Qt程序。不过，个人感觉Qt Creator速度快，人性化。作为Qt的IDE也还不错。
+新建空白工程
+新建空白工程。
+依次点击File->new file or project -> empty qt4 project。然后顺着提示建立之。需要注意的是，工程目录不能有中文，例如 “c：\练习\”。Qmake对中文路径不支持。
+结果如下图所示(由于这是第一个，所以就叫1好了，多好的命名啊；哈哈哈)：
+
+新建cpp文件加入工程。在工程根目录上右键，选择Add new。Cpp source file 。添加过程与上一过程类似。
+输入代码
+具体代码如下；先输入再解释
+#include <QApplication>
+#include <QLabel>
+int main(int argc,char** argv)
+{
+    QApplication app(argc,argv);
+    QLabel* label;
+    label = new QLabel(0);
+    label->setText("Hello Qt");
+    label->show();
+    return app.exec();
+}
+
+编译
+if需要debug的话，快捷键F5，else，Ctrl+R
+
+如果一切正常，不出意外，你会有一个窗口，窗口中有一个文字，Hello Qt。
+
+当然，这是最简单的程序，由于简单，所以非常难看。可以理解。
+
+下面一行一行的解释代码：
+#include <QApplication>
+#include <QLabel>
+恩。引入Qt的库。这两个库是程序用到的，只引入这两个就好了。
+int main(int argc,char** argv)
+这是标准的main函数。其中，argc和argv都有自己的含义。Argc是程序参数的个数。Argv是参数的值(char**就是一个字符串数组对吧，什么？不对？自己百度为什么)。
+其中argv[0]是程序名称本身。Argv[1]是第一个参数
+例如在cmd输入echo helloworld
+其中argv[0]就是echo，argv[1]就是helloworld。而argc为2(程序名+参数1)
+QApplication app(argc,argv);
+Qt GUI application的管理类。声明。
+QLabel* label;
+label = new QLabel(0);
+建立一个QLabel。（Label就是标签的意思）这里QLabel是Qt库里面已经写好的类。Qt是基于Widget这个概念的，所有的GUI元素，例如按钮等，都是一个Widget，都可以单独构成窗口，也可以组合构成窗口。
+这里 QLabel(0)是什么意思呢？Qt里有个概念是parent和child。（和继承的父类子类没有一点关系）。在每个widget类声明时都要声明其parent是谁。如果没有就默认为NULL。自然，还有一个最浅显的道理，0==NULL,NULL摁4下，0摁1下，所以，我写的是0.
+label->setText("Hello Qt");
+既然label是标签，自然能写字，写成hello qt不可以吗？
+这里插一句。Qt的命名是很有规则的。类的首字母大写，每个单词开头大写。函数的首字母小写，每个单词开头字母大写。这样，就构成了上面的函数，set text ，设置label的文本。
+label->show();
+显示QLabel。这里label并没有定位到别的widget，所以直接显示成窗口~。
+return app.exec();
+进入消息循环，退出返回。
+消息循环是什么？百度去吧~
+
+好了，一个简单的Hello Qt就这么写好了。你要试试win32API或者MFC，你就知道这是何其简单了。
+
+这是我的程序，只看别人的代码是永远学不会编程的。写点别的吧。Qt creator 的help很好用，多看看。
+算是练习吧。
+这样输出hello world
+这样输出一个按钮，上面写着hello qt。
+自己重写echo程序
