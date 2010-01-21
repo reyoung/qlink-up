@@ -25,7 +25,6 @@ int CharPic::getCharPixelValue(QChar a,QString family)
     painter.drawRect(0,0,20,20);
     painter.setFont(tempFont);
     painter.drawText(QRectF(0,0,20,20),Qt::AlignCenter,QString().append(a));
-//    paintZone.save("A.bmp");
     unsigned long long count=0;
     int n=0;
     for(qint8 i =0;i<20;i++)
@@ -38,13 +37,12 @@ int CharPic::getCharPixelValue(QChar a,QString family)
     return count;
 }
 
-QString CharPic::getCharPic(QString fn, QString words, QString family)
+QString CharPic::getCharPic(QString fn, QString words, QString family, int scale)
 {
     CharPic a;
     a.initValueTable(words,family);
-    qDebug()<<a.valueTable.size();
     QImage image(fn);
-    image = image.scaled(image.width()/2,image.height()/2);
+    image = image.scaled(image.width()/scale,image.height()/scale);
     QString output;
     for(int i=0;i<image.height();i++)
     {

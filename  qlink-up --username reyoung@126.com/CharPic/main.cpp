@@ -3,10 +3,8 @@
 #include <QTextCodec>
 #include <QFileDialog>
 #include <QTextStream>
-#include <fstream>
 #include <QFile>
 #include <QDebug>
-using namespace std;
 int main(int argc, char *argv[])
 {
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
@@ -23,11 +21,15 @@ int main(int argc, char *argv[])
     QFile file2(tableFn);
     file2.open(QFile::ReadOnly);
     QTextStream fin(&file2);
-    QString out = CharPic::getCharPic(imageFn,fin.readAll());
+    QString out = CharPic::getCharPic(imageFn,fin.readAll(),QString(),4);
     foreach(QChar a,out)
     {
         if(a!=10)fout<<a;
+#ifdef Q_OS_WIN32
         else fout<<"\r\n";
+#else
+        else fout<<"\n";
+#endif
     }
     return 0;
 }
