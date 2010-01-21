@@ -9,7 +9,7 @@ class CharPic:public QObject
 {
 public:
     static int getCharPixelValue(QChar a,QString family=tr(""));
-    static QString getCharPic(QString fn,QString words=tr(""),QString family = tr(""));
+    static QString getCharPic(QString fn,QString words=tr(""),QString family = tr(""),int scale = 2);
 private:
     void initValueTable(QString words=tr(""),QString family=tr(""));
     bool isInTable(QChar a);
