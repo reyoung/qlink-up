@@ -35,7 +35,9 @@ void PicMosaic::changeEvent(QEvent *e)
 
 void PicMosaic::on_loadFile_clicked()
 {
-    this->currentFn = QFileDialog::getOpenFileName(this,tr("Open file"),QDir::currentPath(),"*.bmp *.png *.jpg");
+    do{
+        this->currentFn = QFileDialog::getOpenFileName(this,tr("Open file"),QDir::currentPath(),"*.bmp *.png *.jpg");
+    }while(this->currentFn.isEmpty());
     this->loadFile(this->currentFn);
 }
 
@@ -45,7 +47,7 @@ void PicMosaic::loadFile(const QString &fn)
     QImage image(fn);
 
     this->pixmap = new QPixmap(image.width()/2,image.height()/2);
-    this->pixmap->fill(QColor::fromRgb(255,255,255));
+    //this->pixmap->fill(QColor::fromRgb(255,255,255));
     this->thread->setImage(image);
     this->ui->reset->setEnabled(true);
     this->ui->stop->setEnabled(true);
