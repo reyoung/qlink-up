@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     QFile file2(tableFn);
     file2.open(QFile::ReadOnly);
     QTextStream fin(&file2);
-    QString out = CharPic::getCharPic(imageFn,fin.readAll(),QString(),4);
+    QString out = CharPic::getCharPic(imageFn,fin.readAll(),QString(),2);
     foreach(QChar a,out)
     {
         if(a!=10)fout<<a;

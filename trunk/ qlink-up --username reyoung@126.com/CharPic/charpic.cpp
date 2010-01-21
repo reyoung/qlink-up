@@ -64,8 +64,6 @@ QString CharPic::getCharPic(QString fn, QString words, QString family, int scale
     return output;
 }
 
-
-
 void CharPic::initValueTable(QString words, QString family)
 {
     QString word=words;
