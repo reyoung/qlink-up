@@ -7,7 +7,7 @@ mosaicThread::mosaicThread(QObject *parent):QThread(parent)
 
 void mosaicThread::setImage(QImage image)
 {
-    this->m_image = image.scaled(image.width()/2,image.height()/2);
+    this->m_image = image;
     this->m_pause = false;
     this->start();
 }
