@@ -4,6 +4,7 @@
 #include <QtGui/QMainWindow>
 #include <QPainter>
 #include <QMessageBox>
+#include <QTimeLine>
 
 #include <math.h>
 
@@ -46,6 +47,10 @@ private slots:
     void on_promptButton_clicked();
     //For the High Score
     void highScoreSlot();
+
+    void timeLine1Finish();
+    void timeLine2Slot(int frame);
+    void timeLineSlot(int frame);
 private:
     Phonon::MediaObject* mediaObject;
     Phonon::AudioOutput* audioOutput;
@@ -54,9 +59,12 @@ private:
     PlayWidget* playWidget;
     TimeLine* timeLine;
     NameAndDescriptionWidget* nameNDescriptionWidget;
+    void levelUp(int l);
 
     unsigned int score;
+    int tLevel;
     int level;
+    int percent;
 };
 
 #endif // MAINWINDOW_H
