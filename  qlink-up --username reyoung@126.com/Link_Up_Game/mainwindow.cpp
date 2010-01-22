@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setAttribute(Qt::WA_NoBackground,true);
 
     this->level = -1;
-
+    this->percent = 100;
     this->connect(this,SIGNAL(levelChange(int)),this->playWidget,SLOT(levelChange(int)));
     //connect time up
     this->setMinimumSize(860,580);
@@ -100,18 +100,18 @@ void MainWindow::paintEvent(QPaintEvent *e)
         currentHeight*=0.95;
     }
     currentLevel = currentLevel.scaled(currentWidth,currentHeight);
-    painter.drawPixmap(deltaWidth/2,this->menuBar()->height()/2+deltaHeight/2,currentWidth,currentHeight,currentLevel);
+    painter.drawPixmap(deltaWidth/2,this->menuBar()->height()/2+deltaHeight/2,currentWidth*this->percent/100,currentHeight,currentLevel);
     painter.end();
 }
 
 void MainWindow::on_newGameButton_clicked()
 {
     this->score = 0;
-    this->level = 0;
+    this->levelUp(0);
     this->m_ui->promptButton->setEnabled(true);
-    this->timeLine->setTime(20*pow(2,level));
+    //this->timeLine->setTime(20*pow(2,level));
     this->update();
-    emit levelChange(this->level);
+    //emit levelChange(this->level);
 }
 
 void MainWindow::gameOver()
@@ -120,8 +120,9 @@ void MainWindow::gameOver()
     this->highScoreSlot();
     this->timeLine->resetTime();
     QMessageBox::warning(this,tr("Game Over"),tr("Time's up!\nGame Over!"));
-    this->level = -1;
-    this->playWidget->deletePics();
+    this->levelUp(-1);
+    //this->level = -1;
+    //this->playWidget->deletePics();
 }
 
 void MainWindow::winSlot()
@@ -133,20 +134,22 @@ void MainWindow::winSlot()
         this->score +=this->timeLine->getCurrentTime()*5;
         this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
         this->highScoreSlot();
-        this->timeLine->resetTime();
+        //this->timeLine->resetTime();
         QMessageBox::warning(this,tr("Level Up!"),tr("Level Clear!"));
-        this->level = -1;
+        //this->level = -1;
+        this->levelUp(-1);
         this->update();
     }
     else
     {
-        this->level++;
+        //this->level++;
         QMessageBox::warning(this,tr("Level Up!"),tr("Level Up!"));
-        this->timeLine->setTime(20*pow(2,level));
+        //this->timeLine->setTime(20*pow(2,level));
         this->update();
         this->score +=this->timeLine->getCurrentTime()*5;
         this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
-        emit levelChange(this->level);
+        //emit levelChange(this->level);
+        this->levelUp(this->level+1);
     }
     this->timeLine->pause();
 }
@@ -174,4 +177,43 @@ void MainWindow::on_promptButton_clicked()
 void MainWindow::highScoreSlot()
 {
 
+}
+
+void MainWindow::levelUp(int l)
+{
+    if(l!=-1)
+    {
+        this->timeLine->setTime(20*pow(2,level));
+        emit levelChange(l);
+    }
+    else{
+        this->timeLine->resetTime();
+        this->playWidget->deletePics();
+    }
+    this->tLevel = l;
+    QTimeLine* qTimeLine;
+    qTimeLine = new QTimeLine(1000,this);
+    qTimeLine->setFrameRange(0,100);
+    this->connect(qTimeLine,SIGNAL(frameChanged(int)),this,SLOT(timeLineSlot(int)));
+    this->connect(qTimeLine,SIGNAL(finished()),this,SLOT(timeLine1Finish()));
+    qTimeLine->start();
+}
+void MainWindow::timeLineSlot(int frame)
+{
+    this->percent = 100 - frame;
+    this->update();
+}
+void MainWindow::timeLine1Finish()
+{
+    QTimeLine* t2;
+    t2 =new QTimeLine(1000,this);
+    t2->setFrameRange(0,100);
+    this->level = this->tLevel;
+    this->connect(t2,SIGNAL(frameChanged(int)),this,SLOT(timeLine2Slot(int)));
+    t2->start();
+}
+void MainWindow::timeLine2Slot(int frame)
+{
+    this->percent = frame;
+    this->update();
 }

@@ -1,5 +1,5 @@
 #include "timeline.h"
-
+#include <QDebug>
 struct TimeLine::TimeLinePrivate
 {
     int time;//Total time

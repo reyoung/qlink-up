@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Thu Jan 21 20:12:45 2010
+** Created: Fri Jan 22 20:15:35 2010
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.6.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -43,6 +43,9 @@ static const uint qt_meta_data_MainWindow[] = {
      154,   11,   11,   11, 0x08,
      169,   11,   11,   11, 0x08,
      195,   11,   11,   11, 0x08,
+     211,   11,   11,   11, 0x08,
+     235,  229,   11,   11, 0x08,
+     254,  229,   11,   11, 0x08,
 
        0        // eod
 };
@@ -54,6 +57,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_actionNew_triggered()\0gameOver()\0"
     "winSlot()\0cancellation()\0"
     "on_promptButton_clicked()\0highScoreSlot()\0"
+    "timeLine1Finish()\0frame\0timeLine2Slot(int)\0"
+    "timeLineSlot(int)\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -95,9 +100,12 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 7: cancellation(); break;
         case 8: on_promptButton_clicked(); break;
         case 9: highScoreSlot(); break;
+        case 10: timeLine1Finish(); break;
+        case 11: timeLine2Slot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: timeLineSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 10;
+        _id -= 13;
     }
     return _id;
 }
