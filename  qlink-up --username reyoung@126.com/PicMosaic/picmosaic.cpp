@@ -46,7 +46,7 @@ void PicMosaic::loadFile(const QString &fn)
     delete this->pixmap;
     QImage image(fn);
 
-    this->pixmap = new QPixmap(image.width()/2,image.height()/2);
+    this->pixmap = new QPixmap(image.width(),image.height());
     //this->pixmap->fill(QColor::fromRgb(255,255,255));
     this->thread->setImage(image);
     this->ui->reset->setEnabled(true);

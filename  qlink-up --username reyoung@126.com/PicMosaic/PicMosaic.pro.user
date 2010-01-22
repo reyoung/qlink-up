@@ -259,7 +259,7 @@
     <value type="QString">NSP_HOST=219.243.47.131</value>
     <value type="QString">NUMBER_OF_PROCESSORS=2</value>
     <value type="QString">OS=Windows_NT</value>
-    <value type="QString">PATH=E:\Qt\2010.01\mingw\bin;E:\Qt\2010.01\qt\bin;C:\Program Files\Nokia\PC Connectivity Solution\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;E:\Program Files\nasm;E:\Program Files\CodeBlocks\MinGW\bin;E:\masm5.0;e:\Program Files\Lua\5.1;e:\Program Files\Lua\5.1\clibs;C:\mingw\bin;E:\Program Files\nasm;C:\Program Files\CMake 2.6\bin</value>
+    <value type="QString">PATH=E:\Qt\2010.01\mingw\bin;E:\Qt\2010.01\qt\bin;C:\Program Files\Nokia\PC Connectivity Solution\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;E:\Program Files\nasm;E:\Program Files\CodeBlocks\MinGW\bin;E:\masm5.0;e:\Program Files\Lua\5.1;e:\Program Files\Lua\5.1\clibs;C:\mingw\bin;E:\Program Files\nasm;F:\TASM\BIN;C:\Program Files\CMake 2.6\bin</value>
     <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.wlua;.lexe</value>
     <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
     <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 17 Model 3 Stepping 1, AuthenticAMD</value>
@@ -315,7 +315,7 @@
     <value type="QString">NSP_HOST=219.243.47.131</value>
     <value type="QString">NUMBER_OF_PROCESSORS=2</value>
     <value type="QString">OS=Windows_NT</value>
-    <value type="QString">PATH=E:\Qt\2010.01\mingw\bin;E:\Qt\2010.01\qt\bin;C:\Program Files\Nokia\PC Connectivity Solution\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;E:\Program Files\nasm;E:\Program Files\CodeBlocks\MinGW\bin;E:\masm5.0;e:\Program Files\Lua\5.1;e:\Program Files\Lua\5.1\clibs;C:\mingw\bin;E:\Program Files\nasm;C:\Program Files\CMake 2.6\bin</value>
+    <value type="QString">PATH=E:\Qt\2010.01\mingw\bin;E:\Qt\2010.01\qt\bin;C:\Program Files\Nokia\PC Connectivity Solution\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Common Files\Thunder Network\KanKan\Codecs;E:\Program Files\nasm;E:\Program Files\CodeBlocks\MinGW\bin;E:\masm5.0;e:\Program Files\Lua\5.1;e:\Program Files\Lua\5.1\clibs;C:\mingw\bin;E:\Program Files\nasm;F:\TASM\BIN;C:\Program Files\CMake 2.6\bin</value>
     <value type="QString">PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.wlua;.lexe</value>
     <value type="QString">PROCESSOR_ARCHITECTURE=x86</value>
     <value type="QString">PROCESSOR_IDENTIFIER=x86 Family 17 Model 3 Stepping 1, AuthenticAMD</value>
