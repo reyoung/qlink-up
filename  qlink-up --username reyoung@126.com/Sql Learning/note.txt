@@ -1,0 +1,3 @@
+select id, Title||';'||Director total
+from MOVIES where title like 'M_tc%' or id BETWEEN 0 AND 2
+1--3complete

@@ -24,9 +24,6 @@ struct FeatureVector
     void addFeatureVectorBool(FeatureVectorBool a);
     FeatureVector();
 };
-
-
-
 namespace Ui {
     class Widget;
 }
