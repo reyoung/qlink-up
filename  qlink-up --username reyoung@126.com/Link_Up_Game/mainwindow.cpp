@@ -1,3 +1,9 @@
+//*******************************************************************************//
+//Name :      Reyoung
+//School :      Tju
+//QQ :      383147262
+//licence :  LGPL
+//*******************************************************************************//
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QDebug>
@@ -40,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->m_ui->scoreLabel->setText(tr("Score:")+tr("%1").arg(this->score));
     this->m_ui->promptButton->setEnabled(false);
 
-
+    this->connect(this->m_ui->actionAbout_Me,SIGNAL(triggered()),this,SLOT(aboutMe()));
     this->connect(this->timeLine,SIGNAL(timeOut()),this,SLOT(gameOver()));
     this->connect(this->playWidget,SIGNAL(win()),this,SLOT(winSlot()));
     this->connect(this->m_ui->pauseButton,SIGNAL(clicked()),this->timeLine,SLOT(pause()));
@@ -216,4 +222,8 @@ void MainWindow::timeLine2Slot(int frame)
 {
     this->percent = frame;
     this->update();
+}
+void MainWindow::aboutMe()
+{
+    QMessageBox::warning(this,tr("About me"),tr("This application programed by reyoung under LGPL licence\nQQ:383147262\nE-mail:Reyoung@126.com"));
 }

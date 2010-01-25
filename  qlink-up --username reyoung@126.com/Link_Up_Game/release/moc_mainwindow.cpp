@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Fri Jan 22 20:15:35 2010
-**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.1)
+** Created: Mon Jan 25 11:30:06 2010
+**      by: The Qt Meta Object Compiler version 62 (Qt 4.6.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 62
-#error "This file was generated using the moc from 4.6.1. It"
+#error "This file was generated using the moc from 4.6.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        4,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -44,8 +44,9 @@ static const uint qt_meta_data_MainWindow[] = {
      169,   11,   11,   11, 0x08,
      195,   11,   11,   11, 0x08,
      211,   11,   11,   11, 0x08,
-     235,  229,   11,   11, 0x08,
-     254,  229,   11,   11, 0x08,
+     221,   11,   11,   11, 0x08,
+     245,  239,   11,   11, 0x08,
+     264,  239,   11,   11, 0x08,
 
        0        // eod
 };
@@ -57,8 +58,8 @@ static const char qt_meta_stringdata_MainWindow[] = {
     "on_actionNew_triggered()\0gameOver()\0"
     "winSlot()\0cancellation()\0"
     "on_promptButton_clicked()\0highScoreSlot()\0"
-    "timeLine1Finish()\0frame\0timeLine2Slot(int)\0"
-    "timeLineSlot(int)\0"
+    "aboutMe()\0timeLine1Finish()\0frame\0"
+    "timeLine2Slot(int)\0timeLineSlot(int)\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -100,12 +101,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         case 7: cancellation(); break;
         case 8: on_promptButton_clicked(); break;
         case 9: highScoreSlot(); break;
-        case 10: timeLine1Finish(); break;
-        case 11: timeLine2Slot((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 12: timeLineSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 10: aboutMe(); break;
+        case 11: timeLine1Finish(); break;
+        case 12: timeLine2Slot((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 13: timeLineSlot((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }

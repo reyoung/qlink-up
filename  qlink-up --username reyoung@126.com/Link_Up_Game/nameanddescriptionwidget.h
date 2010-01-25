@@ -1,3 +1,9 @@
+//*******************************************************************************//
+//Name :      Reyoung
+//School :      Tju
+//QQ :      383147262
+//licence :  LGPL
+//*******************************************************************************//
 #ifndef NAMEANDDESCRIPTIONWIDGET_H
 #define NAMEANDDESCRIPTIONWIDGET_H
 

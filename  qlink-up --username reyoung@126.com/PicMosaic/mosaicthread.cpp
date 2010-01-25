@@ -1,3 +1,9 @@
+//*******************************************************************************//
+//Name :      Reyoung
+//School :      Tju
+//QQ :      383147262
+//licence :  LGPL
+//*******************************************************************************//
 #include "mosaicthread.h"
 
 mosaicThread::mosaicThread(QObject *parent):QThread(parent)
