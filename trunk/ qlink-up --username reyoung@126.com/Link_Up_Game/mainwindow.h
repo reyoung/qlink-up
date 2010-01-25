@@ -1,3 +1,9 @@
+//*******************************************************************************//
+//Name :      Reyoung
+//School :      Tju
+//QQ :      383147262
+//licence :  LGPL
+//*******************************************************************************//
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -47,7 +53,7 @@ private slots:
     void on_promptButton_clicked();
     //For the High Score
     void highScoreSlot();
-
+    void aboutMe();
     void timeLine1Finish();
     void timeLine2Slot(int frame);
     void timeLineSlot(int frame);

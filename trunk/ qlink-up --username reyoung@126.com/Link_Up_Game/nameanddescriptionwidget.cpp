@@ -1,3 +1,9 @@
+//*******************************************************************************//
+//Name :      Reyoung
+//School :      Tju
+//QQ :      383147262
+//licence :  LGPL
+//*******************************************************************************//
 #include "nameanddescriptionwidget.h"
 #include "ui_nameanddescriptionwidget.h"
 #include <QDebug>

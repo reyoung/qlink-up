@@ -1,0 +1,6 @@
+F:/Qt Projects/QLink-Up/pro7Ziper/main.cpp
+F:/Qt Projects/QLink-Up/pro7Ziper/window.cpp
+F:/Qt Projects/QLink-Up/pro7Ziper/window.h
+F:/Qt Projects/QLink-Up/pro7Ziper/window.ui
+
+F:/Qt Projects/QLink-Up/pro7Ziper/pro7Ziper.pro

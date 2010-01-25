@@ -246,6 +246,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">ACE_ROOT=E:/ACE_wrappers/</value>
     <value type="QString">ALLUSERSPROFILE=C:\ProgramData</value>
     <value type="QString">APPDATA=C:\Users\Reyoung\AppData\Roaming</value>
     <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
@@ -272,7 +273,7 @@
     <value type="QString">PROGRAMFILES=C:\Program Files</value>
     <value type="QString">PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\</value>
     <value type="QString">PUBLIC=C:\Users\Public</value>
-    <value type="QString">QTDIR=E:/Qt/2010.01/qt</value>
+    <value type="QString">QTDIR=E:/Qt/2009.05-rc1/qt</value>
     <value type="QString">SESSIONNAME=Console</value>
     <value type="QString">SYSTEMDRIVE=C:</value>
     <value type="QString">SYSTEMROOT=C:\Windows</value>
@@ -292,7 +293,7 @@
     <value type="QString">-r</value>
     <value type="QString">CONFIG+=release</value>
    </valuelist>
-   <value key="abstractProcess.command" type="QString">e:/qt/2010.01/qt/bin/qmake.exe</value>
+   <value key="abstractProcess.command" type="QString">e:/qt/2009.05-rc1/qt/bin/qmake.exe</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
    <value key="abstractProcess.workingDirectory" type="QString">F:/Qt Projects/QLink-Up/PicMosaic</value>
   </valuemap>
@@ -302,6 +303,7 @@
   <valuemap type="QVariantMap">
    <value key="ProjectExplorer.BuildConfiguration.DisplayName" type="QString">Release</value>
    <valuelist key="abstractProcess.Environment" type="QVariantList">
+    <value type="QString">ACE_ROOT=E:/ACE_wrappers/</value>
     <value type="QString">ALLUSERSPROFILE=C:\ProgramData</value>
     <value type="QString">APPDATA=C:\Users\Reyoung\AppData\Roaming</value>
     <value type="QString">COMMONPROGRAMFILES=C:\Program Files\Common Files</value>
@@ -328,7 +330,7 @@
     <value type="QString">PROGRAMFILES=C:\Program Files</value>
     <value type="QString">PSMODULEPATH=C:\Windows\system32\WindowsPowerShell\v1.0\Modules\</value>
     <value type="QString">PUBLIC=C:\Users\Public</value>
-    <value type="QString">QTDIR=E:/Qt/2010.01/qt</value>
+    <value type="QString">QTDIR=E:/Qt/2009.05-rc1/qt</value>
     <value type="QString">SESSIONNAME=Console</value>
     <value type="QString">SYSTEMDRIVE=C:</value>
     <value type="QString">SYSTEMROOT=C:\Windows</value>
