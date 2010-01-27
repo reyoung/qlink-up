@@ -83,12 +83,10 @@ void TimeLine::timePlusPlus()
     }
     this->update();
 }
-
 int TimeLine::getCurrentTime()
 {
     return this->privateData->currentTime;
 }
-
 void TimeLine::timeSubSub()
 {
     this->privateData->currentTime-= 6;
