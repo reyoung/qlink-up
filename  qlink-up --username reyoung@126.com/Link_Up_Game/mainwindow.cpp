@@ -52,6 +52,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->connect(this->m_ui->pauseButton,SIGNAL(clicked()),this->timeLine,SLOT(pause()));
     this->connect(this->m_ui->pauseButton,SIGNAL(clicked()),this->playWidget,SLOT(pause()));
     this->connect(this->playWidget,SIGNAL(exterminate()),this,SLOT(cancellation()));
+
 }
 
 MainWindow::~MainWindow()

@@ -284,7 +284,7 @@
     <value type="QString">WINDIR=C:\Windows</value>
    </valuelist>
    <valuelist key="abstractProcess.arguments" type="QVariantList">
-    <value type="QString">F:/Qt Projects/QLink-Up/Link_Up_Game/QLink-Up.pro</value>
+    <value type="QString">F:/QtProjects/QLink-Up/Link_Up_Game/QLink-Up.pro</value>
     <value type="QString">-spec</value>
     <value type="QString">win32-g++</value>
     <value type="QString">-r</value>
@@ -292,7 +292,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">e:/qt/2009.05-rc1/qt/bin/qmake.exe</value>
    <value key="abstractProcess.enabled" type="bool">false</value>
-   <value key="abstractProcess.workingDirectory" type="QString">F:/Qt Projects/QLink-Up/Link_Up_Game</value>
+   <value key="abstractProcess.workingDirectory" type="QString">F:/QtProjects/QLink-Up/Link_Up_Game</value>
   </valuemap>
  </data>
  <data>
@@ -346,7 +346,7 @@
    </valuelist>
    <value key="abstractProcess.command" type="QString">E:/Qt/2009.05-rc1/mingw/bin/mingw32-make.exe</value>
    <value key="abstractProcess.enabled" type="bool">true</value>
-   <value key="abstractProcess.workingDirectory" type="QString">F:/Qt Projects/QLink-Up/Link_Up_Game</value>
+   <value key="abstractProcess.workingDirectory" type="QString">F:/QtProjects/QLink-Up/Link_Up_Game</value>
   </valuemap>
  </data>
  <data>
